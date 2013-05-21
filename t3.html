@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="tictactoe.js"></script>
+      <script>
+        cellClicked = function(n){
+          selectedCell = "cell"+n;
+        
+          canv = document.getElementById(selectedCell);
+
+          context = canv.getContext("2d");
+
+          //if(occupied[n] == false) {
+            //if(turn%2 == 0){
+              context.beginPath();
+              context.moveTo(10,10);
+              context.lineTo(40,40);
+              context.moveTo(40,10);
+              context.lineTo(10,40);
+              context.stroke();
+              context.closePath();
+              content[n] = 'X';
+            //}
+          //}
+
+        }
+
+      </script>
+  </head>
+
+  <body>
+      <h1>Tic Tac Toe</h1>
+
+      <canvas id = "cell1" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(1)"></canvas>
+      <canvas id = "cell2" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(2)"></canvas>
+      <canvas id = "cell3" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(3)"></canvas>
+      <br>
+      <canvas id = "cell4" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(4)"></canvas>
+      <canvas id = "cell5" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(5)"></canvas>
+      <canvas id = "cell6" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(6)"></canvas>
+      <br>
+      <canvas id = "cell7" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(7)"></canvas>
+      <canvas id = "cell8" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(8)"></canvas>
+      <canvas id = "cell9" width="50" height="50" style="border:1px solid black"
+      onclick="cellClicked(9)"></canvas>
+      
+
+
+  </body>
+
+<html>
