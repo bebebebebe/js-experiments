@@ -1,36 +1,40 @@
 cellClicked = function(m,n) {
-  if (board[m][n] == 0) {
-    selectedCell = m+"cell"+n;
-    canv = document.getElementById(selectedCell);
-    context = canv.getContext("2d");
-    if (turn%2 == 0) {
-      drawX(context);
-      board[m][n] = 1;}
-    else {
-      drawO(context);
-      board[m][n] = -1;}
-    turn += 1;
-    console.log(turn);
-  };
-  if (winner(board))
-    announceWin(turn);
-  else if (turn == 9)
-    announceTie();
+  if (keep_playing) {
+    if (board[m][n] == 0) {
+      selectedCell = m+"cell"+n;
+      canv = document.getElementById(selectedCell);
+      context = canv.getContext("2d");
+      if (turn%2 == 0) {
+        drawX(context);
+        board[m][n] = 1;}
+      else {
+        drawO(context);
+        board[m][n] = -1;}
+      turn += 1;
+      console.log(turn);
+    };
+    if (winner(board))
+      announce(turn);
+    else if (turn == 9) {
+      turn += 1;
+      gameOver(turn);
+    }
+  }
 }
 
-announceWin = function(turn) {
+gameOver = function(turn) {
+  message = function(turn) {
+    if (turn == 10)
+      return "Game Over! It's a Tie.";
+    else if (turn%2 == 0)
+      return "Game Over! O Wins!";
+    else
+      return "Game Over! X Wins!";
+  }
   elem = document.createElement("div");
-  if (turn%2 == 1)
-    elem.innerHTML = ' Game Over! X Wins! ';
-  else
-    elem.innerHTML = ' Game Over! O Wins! ';
+  elem.innerHTML = message(turn);
   document.body.insertBefore(elem, document.body.childNodes[0]);
-}
-
-announceTie = function() {
-  elem = document.createElement("div");
-  elem.innerHTML = " Game Over! It's a tie. ";
-  document.body.insertBefore(elem, document.body.childNodes[0]);
+  keep_playing = false;
 }
 
 drawX = function(context) {
@@ -53,4 +57,5 @@ drawO = function(context) {
 play = function() {
   turn = 0;
   board = [[0,0,0],[0,0,0],[0,0,0]];
+  keep_playing = true;
 }
