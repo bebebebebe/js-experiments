@@ -1,29 +1,30 @@
 
 contains = function(a, obj) {
     for (var i = 0; i < a.length; i++) {
-        if (a[i] === obj) {
+        if (a[i][0] === obj[0] && a[i][1] === obj[1]) {
             return true;
         }
     }
     return false;
 }
 
-cellClicked = function(n){
-        if (! contains(usedCells,n)) {
-          usedCells.push(n);
-          selectedCell = "cell"+n;        
-          canv = document.getElementById(selectedCell);
-          context = canv.getContext("2d");
-          if (turn%2 == 0)
-            drawX(context);         
-          else
-            drawO(context);
-          turn += 1;
-          console.log(turn);
-        }
-        else if (turn == 9)
-          console.log('game over');
-      }
+
+cellClicked = function(m,n) {
+  if (! contains(usedCells, [m,n])) {
+    usedCells.push([m,n]);
+    selectedCell = m+"cell"+n;
+    canv = document.getElementById(selectedCell);
+    context = canv.getContext("2d");
+    if (turn%2 == 0)
+      drawX(context);
+    else
+      drawO(context);
+    turn += 1;
+    console.log(turn);
+  }
+}
+
+
 
 drawX = function(context) {
   context.beginPath();
