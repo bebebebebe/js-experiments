@@ -1,30 +1,29 @@
 
-contains = function(a, obj) {
-    for (var i = 0; i < a.length; i++) {
-        if (a[i][0] === obj[0] && a[i][1] === obj[1]) {
-            return true;
-        }
-    }
-    return false;
-}
-
-
 cellClicked = function(m,n) {
-  if (! contains(usedCells, [m,n])) {
-    usedCells.push([m,n]);
+  if (board[m][n] == 0) {
     selectedCell = m+"cell"+n;
     canv = document.getElementById(selectedCell);
     context = canv.getContext("2d");
-    if (turn%2 == 0)
+    if (turn%2 == 0) {
       drawX(context);
-    else
+      board[m][n] = 1;}
+    else {
       drawO(context);
+      board[m][n] = -1;}
     turn += 1;
-    console.log(turn);
+    console.log(board);
   }
+  if (winner(board))
+    announceWin();
 }
 
+announceWin = function() {
+  elem = document.createElement("div");
+   //elem.id = 'myID';
+   elem.innerHTML = ' Game Over! You Win! '
+   document.body.insertBefore(elem,document.body.childNodes[0]);
 
+}
 
 drawX = function(context) {
   context.beginPath();
@@ -44,7 +43,6 @@ drawO = function(context) {
 }
 
 play = function() {
-  usedCells = [];
   turn = 0;
   board = [[0,0,0],[0,0,0],[0,0,0]];
 }

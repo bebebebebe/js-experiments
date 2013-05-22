@@ -1,8 +1,6 @@
 
 var board = [[1,1,1],[0,0,0],[1,0,1]];
 
-
-
 function GameState(player, board){
   this.player = player;
   this.board = board;
@@ -20,7 +18,7 @@ function rowwin(board){
     var total = board[i].reduce(function(x,y) {
       return x + y;
     });
-  if (total == board.length)
+  if (Math.abs(total) == board.length)
     return true;
   }
   return false;
@@ -41,7 +39,7 @@ function diagwin(board){
 }
 
 function winner(board){
- return rowwin(board) || colwin(board) || diawin(board);
+ return rowwin(board) || colwin(board) || diagwin(board);
 }
 
 function invert(matrix){
