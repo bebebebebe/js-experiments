@@ -2,6 +2,7 @@
 var board = [[1,1,1],[0,0,0],[1,0,1]];
 
 
+
 function GameState(player, board){
   this.player = player;
   this.board = board;
