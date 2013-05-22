@@ -1,4 +1,3 @@
-
 cellClicked = function(m,n) {
   if (board[m][n] == 0) {
     selectedCell = m+"cell"+n;
@@ -19,10 +18,8 @@ cellClicked = function(m,n) {
 
 announceWin = function() {
   elem = document.createElement("div");
-   //elem.id = 'myID';
-   elem.innerHTML = ' Game Over! You Win! '
-   document.body.insertBefore(elem,document.body.childNodes[0]);
-
+  elem.innerHTML = ' Game Over! You Win! '
+  document.body.insertBefore(elem, document.body.childNodes[0]);
 }
 
 drawX = function(context) {
@@ -46,18 +43,4 @@ play = function() {
   turn = 0;
   board = [[0,0,0],[0,0,0],[0,0,0]];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
