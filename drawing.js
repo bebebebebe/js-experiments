@@ -10,15 +10,26 @@ cellClicked = function(m,n) {
       drawO(context);
       board[m][n] = -1;}
     turn += 1;
-    console.log(board);
-  }
+    console.log(turn);
+  };
   if (winner(board))
-    announceWin();
+    announceWin(turn);
+  else if (turn == 9)
+    announceTie();
 }
 
-announceWin = function() {
+announceWin = function(turn) {
   elem = document.createElement("div");
-  elem.innerHTML = ' Game Over! You Win! '
+  if (turn%2 == 1)
+    elem.innerHTML = ' Game Over! X Wins! ';
+  else
+    elem.innerHTML = ' Game Over! O Wins! ';
+  document.body.insertBefore(elem, document.body.childNodes[0]);
+}
+
+announceTie = function() {
+  elem = document.createElement("div");
+  elem.innerHTML = " Game Over! It's a tie. ";
   document.body.insertBefore(elem, document.body.childNodes[0]);
 }
 
@@ -43,4 +54,3 @@ play = function() {
   turn = 0;
   board = [[0,0,0],[0,0,0],[0,0,0]];
 }
-
