@@ -1,18 +1,3 @@
-
-var board = [[1,1,1],[0,0,0],[1,0,1]];
-
-function GameState(player, board){
-  this.player = player;
-  this.board = board;
-  this.winState = winner(board);
-}
-
-function Game(move, gameState){
-  this.move = move;
-  this.gameState = gameState;
-}
-
-
 function rowwin(board){
   for(i=0; i<board.length; i++){
     var total = board[i].reduce(function(x,y) {
