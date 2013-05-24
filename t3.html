@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <link rel="stylesheet" type="text/css" href="style.css"/>
       <script src="tictactoe.js"></script>
       <script src="drawing.js"></script>
   </head>
@@ -10,7 +11,7 @@
 
       <h4>For two players. X has the first turn. Click on a cell to begin!</h4>
 
-  <div>
+  <div class="board">
       <canvas id = "0cell0" width="50" height="50" style="border:1px solid black"
       onclick="cellClicked(0,0)"></canvas>
       <canvas id = "0cell1" width="50" height="50" style="border:1px solid black"
@@ -31,12 +32,8 @@
       onclick="cellClicked(2,1)"></canvas>
       <canvas id = "2cell2" width="50" height="50" style="border:1px solid black"
       onclick="cellClicked(2,2)"></canvas>
+      <br>
   </div>
-
-  <script>
-    play();
-  </script>
-
 
   </body>
 
